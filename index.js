@@ -1,17 +1,26 @@
+
 window.onload = function() {
     loadTextFromFile();
 }
 async function loadTextFromFile() {
     const response = await fetch('source.txt');
-    const text = await response.text();
+    let text = await response.text();
+
+    // Convert text to lowercase
+    text = text.toLowerCase();
+
+    // Remove citations
+    text = text.replace(/\[\d+\]/g, '');
 
     const passageElement = document.getElementById('passage');
     passageElement.innerText = text;
 }
 async function findAnswers() {
-    console.log("Loading model...");
+    const statusElement = document.getElementById('status');
+
+    statusElement.innerText = "Loading model...";
     const model = await qna.load();
-    console.log("Model loaded.");
+    statusElement.innerText += "\nModel loaded.";
 
     const questionElement = document.getElementById('question');
     const passageElement = document.getElementById('passage');
@@ -19,9 +28,9 @@ async function findAnswers() {
     const question = questionElement.value;
     const passage = passageElement.innerText;
 
-    console.log("Finding answers...");
+    statusElement.innerText += "\nFinding answers...";
     const answers = await model.findAnswers(question, passage);
-    console.log("Answers found.");
+    statusElement.innerText += "\nAnswers found.";
 
     let highlightedPassage = passage;
     answers.forEach(answer => {
@@ -33,8 +42,8 @@ async function findAnswers() {
     passageElement.innerHTML = highlightedPassage;
 
     if (answers.length > 0) {
-        alert(`Answer: ${answers[0].text}`);
+        statusElement.innerText += `\nAnswer: ${answers[0].text}`;
     } else {
-        alert("No answers found in the passage.");
+        statusElement.innerText += "\nNo answers found in the passage.";
     }
 }
