@@ -1,0 +1,22 @@
+*{
+    margin:auto;
+    width: 650px;
+}
+html{
+    padding: 20px;
+}
+body{
+    background-color: #484848;
+    font-family: Arial, sans-serif;
+}
+#passage{
+    background-color: #1771b7;
+    padding: 20px;
+    border-radius: 5px;
+    
+}
+#qa_sect{
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+}

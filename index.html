@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
     <title>TensorFlow project</title>
     <style>
         .highlight {
@@ -10,16 +11,20 @@
         }
     </style>
 </head>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>
+
 
 <body>
-    <input type="text" id="question" placeholder="Enter your question here">
-    <button onclick="findAnswers()">Find Answers</button><p id="status"></p>
+    <h1>Portal QA Project</h1>
+    <div id="qa_sect">
+        <input type="text" id="question" placeholder="Enter your question here">
+        <button onclick="findAnswers()">Find Answers</button><p id="status"></p>
+    </div>
     
     <p id="passage">
     </p>
-
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
     <script src="index.js">
         
     </script>
