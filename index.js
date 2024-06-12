@@ -1,8 +1,10 @@
+// This function is called when the window is loaded. It logs a message to the console and calls the loadTextFromFile function.
 window.onload = function() {
     console.log("Window loaded");
     loadTextFromFile();
 }
 
+// This function loads text from a file named 'source.txt', converts the text to lowercase, removes citations, and sets the text of an element with the id 'passage' to the loaded text.
 async function loadTextFromFile() {
     console.log("Loading text from file...");
     const response = await fetch('source.txt');
@@ -19,6 +21,7 @@ async function loadTextFromFile() {
     console.log("Text loaded from file");
 }
 
+// This function loads the Universal Sentence Encoder model and assigns it to the useModel variable.
 let useModel;
 async function loadUseModel() {
     console.log("Loading Universal Sentence Encoder...");
@@ -27,6 +30,7 @@ async function loadUseModel() {
 }
 loadUseModel();
 
+// This function finds answers to a question in a passage. It loads a model, gets the question and passage from elements with the ids 'question' and 'passage', finds answers to the question in the passage, highlights the answers in the passage, generates embeddings for the question and each answer, computes the semantic similarity between the question and each answer, sorts the answers by similarity in descending order, and displays the top answers.
 async function findAnswers() {
     const statusElement = document.getElementById('status');
 
