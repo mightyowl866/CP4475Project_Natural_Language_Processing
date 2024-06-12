@@ -78,17 +78,26 @@ async function findAnswers() {
         // Sort the answers by similarity in descending order
         answers.sort((a, b) => b.similarity - a.similarity);
 
+        // Create a table
+        let table = `<table><tr><th>Answer</th><th>Confidence Score</th><th>Similarity</th></tr>`;
+
         // Display the top answers
         for (let i = 0; i < Math.min(answers.length, 3); i++) {
-            let answerText = `Answer ${i+1}: ${answers[i].text} (Confidence Score: ${answers[i].score.toFixed(2)}, Similarity: ${answers[i].similarity.toFixed(2)})`;
-            if (i === 0) { // The answer with the highest confidence score
-                answerText = `<b>${answerText}</b>`;
-            }
-            statusElement.innerHTML += `\n${answerText}`;
-            console.log(answerText);
+            let answerText = answers[i].text;
+            let confidenceScore = answers[i].score.toFixed(2);
+            let similarity = answers[i].similarity.toFixed(2);
+
+            // Add a row to the table for each answer
+            table += `<tr><td>${answerText}</td><td>${confidenceScore}</td><td>${similarity}</td></tr>`;
         }
-    } else {
-        statusElement.innerText += "\nNo answers found in the passage.";
-        console.log("No answers found in the passage");
-    }
+
+        // Close the table
+        table += `</table>`;
+
+        // Add the table to the status element
+        statusElement.innerHTML += table;
+        } else {
+            statusElement.innerText += "\nNo answers found in the passage.";
+            console.log("No answers found in the passage");
+        }
 }

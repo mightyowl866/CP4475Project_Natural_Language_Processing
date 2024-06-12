@@ -1,13 +1,49 @@
 *{
     margin:auto;
     width: 650px;
+    font-family: Din Light;
 }
 html{
+    padding: 20px;
+}
+@font-face {
+    font-family: 'Din Light';
+    src: url(DIN\ Light.ttf);
+}
+h1{
+    
+    
+    color: white;
+    margin: auto;
+    text-align: center;
+    width: 650px;
     padding: 20px;
 }
 body{
     background-color: #484848;
     font-family: Arial, sans-serif;
+}
+
+input {
+    margin-bottom: 20px;
+    background-color: #1771b7;
+    border: none; /* Removes the default border */
+    border-radius: 50px; /* Makes the input field rounded */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-left: -6px;
+    color: white; /* Makes the text color white */
+    
+    /* Adds some padding to the left of the text */
+}
+button{
+    background-color: orange;
+    border-radius: 50px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
 }
 #passage{
     background-color: #1771b7;
@@ -19,4 +55,12 @@ body{
     background-color: #f0f0f0;
     padding: 20px;
     border-radius: 5px;
+}
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+#status {
+    animation: fadeIn 2s ease-in-out;
 }
